@@ -1,5 +1,4 @@
 from pathlib import Path
-import sys
 
 path = Path('files/Cats_info.txt')
 
@@ -16,13 +15,18 @@ def get_cats_info(path)->list:
 
     except FileNotFoundError:
         print(f"Файл {path} не знайдено.")
-        sys.exit(1)  # Завершити програму
+        return []
     except UnicodeDecodeError:
         print("Файл пошкоджений або має неправильне кодування.")
-        sys.exit(1)  # Завершити програму
+        return []
     except Exception as e:
         print(f"Сталася помилка: {e}")
-        sys.exit(1)  # Завершити програму
+        return []
 
-cats_info = get_cats_info(path)
-print(cats_info)
+
+if __name__ == '__main__':
+    cats_info = get_cats_info(path)
+    if cats_info:
+        print(cats_info)
+    else:
+        print("Неможливо обробити файл, або він порожній!")

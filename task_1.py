@@ -1,5 +1,4 @@
 from pathlib import Path
-import sys
 
 path = Path('files/Salaries.txt')
 
@@ -18,19 +17,26 @@ def total_salary(path) -> tuple:
     
     except FileNotFoundError:
         print(f"Файл {path} не знайдено.")
-        sys.exit(1)  # Завершити програму
+        return ()
     except UnicodeDecodeError:
         print("Файл пошкоджений або має неправильне кодування.")
-        sys.exit(1)  # Завершити програму
+        return ()
     except Exception as e:
         print(f"Сталася помилка: {e}")
-        sys.exit(1)  # Завершити програму
+        return ()
     
 def print_result(total, average):
     print(f"Загальна сума заробітної плати: {total}, Середня заробітна плата: {average}")
 
     
-total, average = total_salary(path)
+if __name__ == '__main__':
 
-# Вивід результату
-print_result(total, average)
+    result = total_salary(path)
+
+    if result:
+        total, average = result
+
+        # Вивід результату
+        print_result(total, average)
+    else:
+        print("Неможливо обробити файл, або він порожній!")
