@@ -2,16 +2,16 @@ from pathlib import Path
 
 path = Path('files/Cats_info.txt')
 
-def get_cats_info(path)->list:
+
+def get_cats_info(path) -> list:
     try:
         with open(path, encoding='utf-8') as file:
             list_cats = []  # Створюємо список для збереження в ньому інформації про котів
             keys = ['id', 'name', 'age']
             for line in file:
-                temp_cats = line.strip().split(',') # Тимчасовий список для кожного рядку
+                temp_cats = line.strip().split(',')  # Тимчасовий список для кожного рядку
                 list_cats.append(dict(zip(keys, temp_cats)))
-        
-        return list_cats # Передаємо результат
+        return list_cats  # Передаємо результат
 
     except FileNotFoundError:
         print(f"Файл {path} не знайдено.")
