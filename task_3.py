@@ -3,6 +3,7 @@ import sys
 from pathlib import Path, PurePath
 import shutil
 
+
 def color_text(path, fore_color):
     # Ця ф-ція для друку назв каталогів та файлів з заповненням чоним фоном всього рядка терміналу
     # Отримання назви кореневої директорії
@@ -13,6 +14,7 @@ def color_text(path, fore_color):
     full_line = dir_file.ljust(terminal_width)
     # Виведення назви директорії синім кольором з чорним фоном на весь рядок
     print(Back.BLACK + fore_color + full_line + Style.RESET_ALL)
+
 
 def print_dir(path, count=1):
 
@@ -33,10 +35,10 @@ def print_dir(path, count=1):
 if len(sys.argv) >= 2:
     param = sys.argv[1]
     path = Path(param)
-    
+
     # Провірка на існування директорії
     if path.exists():
-        
+
         # Провірка на файл
         if path.is_file():
             print("The parameter must be a directory!")
@@ -53,6 +55,13 @@ else:
     print('Parameter not specified!')
 
 
-# Правильний запуск скрипта з командного рядка на Windows: python .\task_3.py files/picture             Результат: https://prnt.sc/w6cVKF7sMiMI
-# Не правильний запуск скрипта з командного рядка на Windows: python .\task_3.py files/pic              Результат: https://prnt.sc/e5xBAPNCL_Uq
-# Запуск скрипта без параметрів з командного рядка на Windows: python .\task_3.py                       Результат: https://prnt.sc/UDDrtEEGXziy
+"""
+Правильний запуск скрипта з командного рядка на Windows: python .\task_3.py files/picture
+Результат: https://prnt.sc/w6cVKF7sMiMI
+
+Не правильний запуск скрипта з командного рядка на Windows: python .\task_3.py files/pic
+Результат: https://prnt.sc/e5xBAPNCL_Uq
+
+Запуск скрипта без параметрів з командного рядка на Windows: python .\task_3.py
+Результат: https://prnt.sc/UDDrtEEGXziy
+"""
